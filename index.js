@@ -17,6 +17,8 @@ try {
                 'Authorization': `token ${auth}`
             }
         });
+        console.log(res);
+        console.log(res.data);
     };
     console.log(res);
     console.log(res.data);
