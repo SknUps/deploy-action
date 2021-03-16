@@ -1,0 +1,25 @@
+name: Build and Publich Docker Image
+
+on:
+  workflow_dispatch:
+    inputs:
+      image:
+        description: 'Docker image'
+        required: true
+      tag:
+        description: 'Docker image version'
+        required: true
+      auth:
+        description: 'Secret to access thing'
+        required: true
+
+jobs:
+  test_action:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Test deploy
+      uses: sknups/deploy-action@main
+      with:
+        image: ${{ github.event.inputs.image }}
+        tag: ${{ github.event.inputs.tag }}
+        auth: ${{ github.event.inputs.auth }}

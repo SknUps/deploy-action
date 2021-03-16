@@ -1,0 +1,15 @@
+name: 'Deploy Action'
+description: 'Triggers the update '
+inputs:
+  image:  # id of input
+    description: 'The docker image name'
+    required: true
+  tag:  # id of input
+    description: 'The docker image revision'
+    required: true
+  auth:  # id of input
+    description: 'The auth code to post'
+    required: true
+runs:
+  using: 'node12'
+  main: 'index.js'
