@@ -9,19 +9,22 @@ try {
     const url = "https://api.github.com/repos/sknups/DRM_Apps_Deply/actions/workflows/update_image.yml/dispatches";
     console.log(`Updating ${image} to ${tag}`);
     const body = { "ref": "main", "inputs": { "image": image, "version": tag } };
-    let res = '';
-    const post = async () => {
-        res = await axios.post(url, body, {
-            headers: {
-                'Accept': 'application/vnd.github.v3+json',
-                'Authorization': `token ${auth}`
-            }
-        });
+    axios.post(url, body, {
+        headers: {
+            'Accept': 'application/vnd.github.v3+json',
+            'Authorization': `token ${auth}`
+        }
+    }).then(function (res) {
         console.log(res);
-        console.log(res.data);
-    };
-    console.log(res);
-    console.log(res.data);
+
+        if (res.status != 200) {
+            core.setFailed("Not a 200 response code");
+        };
+    })
+        .catch(function (error) {
+            console.log(error.message);
+            console.log(error);
+        });
 } catch (error) {
     console.log(error.message);
     core.setFailed(error.message);
