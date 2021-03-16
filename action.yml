@@ -10,7 +10,7 @@ inputs:
   auth:
     description: 'The GH token code to use'
     required: true
-  auth:
+  url:
     description: 'The url to post to'
     required: true
 runs:
