@@ -9,15 +9,16 @@ try {
     const url = "https://api.github.com/repos/sknups/DRM_Apps_Deply/actions/workflows/update_image.yml/dispatches";
     console.log(`Updating ${image} to ${tag}`);
     const body = { "ref": "main", "inputs": { "image": image, "version": tag } };
+    let res = '';
     const post = async () => {
-        const res = await axios.post(url, body, {
+        res = await axios.post(url, body, {
             headers: {
                 'Accept': 'application/vnd.github.v3+json',
                 'Authorization': `token ${auth}`
             }
         });
-        console.log(res.data);
     };
+    console.log(res.data);
 } catch (error) {
     console.log(error.message);
     core.setFailed(error.message);
