@@ -1,14 +1,17 @@
-name: 'Deploy Action'
-description: 'Triggers the update '
+name: 'Deploy Docker with Tag Action'
+description: 'Triggers the update'
 inputs:
-  image:  # id of input
+  image:
     description: 'The docker image name'
     required: true
-  tag:  # id of input
+  tag:
     description: 'The docker image revision'
     required: true
-  auth:  # id of input
-    description: 'The auth code to post'
+  auth:
+    description: 'The GH token code to use'
+    required: true
+  auth:
+    description: 'The url to post to'
     required: true
 runs:
   using: 'node12'

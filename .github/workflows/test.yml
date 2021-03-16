@@ -1,4 +1,4 @@
-name: Build and Publich Docker Image
+name: Test Update Docker Image
 
 on:
   workflow_dispatch:
@@ -10,7 +10,10 @@ on:
         description: 'Docker image version'
         required: true
       auth:
-        description: 'Secret to access thing'
+        description: 'GH Access token'
+        required: true
+      url:
+        description: 'URL to post to'
         required: true
 
 jobs:
@@ -23,3 +26,4 @@ jobs:
         image: ${{ github.event.inputs.image }}
         tag: ${{ github.event.inputs.tag }}
         auth: ${{ github.event.inputs.auth }}
+        url: ${{ github.event.inputs.url }}

@@ -6,7 +6,7 @@ try {
     const image = core.getInput('image');
     const tag = core.getInput('tag');
     const auth = core.getInput('auth');
-    const url = "https://api.github.com/repos/sknups/DRM_Apps_Deply/actions/workflows/update_image.yml/dispatches";
+    const url = core.getInput('url');
     console.log(`Updating ${image} to ${tag}`);
     const body = { "ref": "main", "inputs": { "image": image, "version": tag } };
     axios.post(url, body, {
