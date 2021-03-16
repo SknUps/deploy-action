@@ -18,6 +18,7 @@ try {
             }
         });
     };
+    console.log(res);
     console.log(res.data);
 } catch (error) {
     console.log(error.message);
