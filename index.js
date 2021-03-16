@@ -15,10 +15,9 @@ try {
             'Authorization': `token ${auth}`
         }
     }).then(function (res) {
-        console.log(res);
-
-        if (res.status != 200) {
-            core.setFailed("Not a 200 response code");
+        if (res.status != 204) {
+            console.log(res);
+            core.setFailed("Not a 204 response code");
         };
     })
         .catch(function (error) {
